@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelos Enterprises</title>
+    <style>
+        :root {
+            --white: white;
+            --black: #36383F;
+            --gray: #85888C;
+            --gold: rgb(221, 171, 94);
+            --goldShade: rgb(208, 139, 32);
+            --goldTint: rgb(238, 213, 174);
+            --bronze: rgb(160, 132, 99);
+            --charcoal: rgb(66, 71, 84);
+            --blue: rgb(7, 122, 153);
+            --blueTint: rgb(184, 178, 191);
+            --main-font-family: Arial, georgia, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--main-font-family);
+            color: var(--black);
+            background-color: var(--white);
+            padding: 20px;
+        }
+
+        .more-page {
+            width: 100%;
+            margin: auto;
+            background-color: var(--blueTint);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .more-page h1 {
+            color: var(--blue);
+            margin-bottom: 20px;
+        }
+
+        .more-page p {
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-link:hover {
+            background-color: var(--goldShade);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .more-page {
+                padding: 15px;
+            }
+        }
+
+        .more-page-image {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .more-page-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="more-page-image">
+        <img src="img/solving2.jpg" alt="solving problems image">
+
+    </div>
+    <div class="more-page">
+        <h1 id="title"></h1>
+        <p id="body"></p>
+        <div>
+            <a href="index.html" class="home-link">Back Home</a>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        console.log(title);
+        const pages = [
+            {
+                ID: "slide-1",
+                title: "Products and services",
+                body: "Gelos is a global agency that delivers high-quality products to clients seeking to achieve organisational success through digital transformation. Over the past ten years, we have served our clients to achieve digital transformation by focusing on customer-centricity and data-driven insights; combining these methodologies with artificial intelligence and machine learning enables digital transformations to be set into motion. We understand the digital ecosystem while identifying operational and technological gaps within the business"
+            },
+            {
+                ID: "slide-2",
+                title: "Solving business problems",
+                body: "At Gelos, we provide cutting-edge technologies, helping our customers improve how they interact with digital solutions and seek new ways to change how they do business. We provide many services that allow you to take advantage of new technology and innovation to help solve your business problems."
+            }
+        ];
+
+        const currentPage = pages.find(function (p) { return p.ID === title });
+        console.log(currentPage);
+        const h1 = document.querySelector("#title");
+        const p = document.querySelector("#body");
+        h1.innerText = currentPage.title;
+        p.innerText = currentPage.body;
+    </script>
+</body>
+</html>
